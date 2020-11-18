@@ -1,33 +1,30 @@
 <?php
-    include('conn.php');
-
     session_start();
 
-    
+    include('conn.php');
+    include_once('header.php');
+    include_once('menu.php');
+    $errors = [];
+
+    // if (isset($_SESSION['id'])) {
+        if (isset($_GET['action'])) {
+            $page = $_GET['action'] . ".php";
+            if(file_exists($page)) {
+                include_once($page);
+            } else {
+                array_push($errors, 'Page does not exist. Please turn back <a href= "index.php">Home</a>');
+            } 
+         } else {
+           ?> 
+              <div class="container">
+          <h3>Vila Best</h3>
+          <p>A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.vvvvvvvvvvs</p>
+        </div>
+        <?php
+          include_once('acommodation.php'); 
+         }
+      
 ?>
+  
+ 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Your perfect vacation</title>
-</head>
-    <body>
-        <nav class="nav">
-            <a href="login.php" class="nav-item">Login</a>
-            <a href="registration.php" class="nav-item">Register</a>
-        </nav>
-        <div>
-              <h1>Vila Best</h1>      
-        </div>
-        <div>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        </div>
-
-
-
-
-
-
-
-    </body>
-</html>

@@ -1,17 +1,16 @@
 <?php 
 	require ('conn.php');
+	include_once('header.php');
 
 	if (isset($_POST['login_user'])) {
 		$errors = [];
 		
-
 		if (empty($_POST['user_name'])) {
 			array_push($errors, 'Enter your username!');
 		} 
 		if (empty($_POST['pass'])) {
 			array_push($errors, 'Enter your password!');
 		}
-
 
 		if (!empty($_POST['user_name']) && !empty($_POST['pass'])) {
 			$salt = 'booking987';
@@ -28,57 +27,37 @@
 				$statement->execute($data);
 				$result = $statement->fetch();
 
-		
+			
 				if ($statement->rowCount() == 1) {
-					header('location: index.php'); 
-				} else if ($statement->rowCount() >= 2) {
-					array_push($errors, 'Something went wrong! Please, contact Admin!');
-				} else {
+					$role = $result['Admin'];
+					$_SESSION['is_admin'] = $role;
+					switch ($role) {
+						case '1':
+							header('location: adminhome.php');
+							break;
+						
+							case '0':
+								header('location: loginsuccess.php');
+								break;
+					}
+		
+				 } elseif ($statement->rowCount() >= 2) {
+				 	array_push($errors, 'Something went wrong! Please, contact Admin!');
+				 } else {
 					array_push($errors, 'Invalid username/password!');
 				}
 		}
-		if (empty($errors)) {
-			$loggedusers = $statement->fetchAll(PDO::FETCH_OBJ);
-			foreach ($loggedusers as $loggeduser) {
-				$loginacount = $loggeduser->Id;
-			}
-			$_SESSION['Id'] = $loginacount;
-			header('location: loginsuccess.php'); 
-		} else {
-			include_once ('errors.php');
-		}
-
-
-		$query = "SELECT Id, Admin FROM `user`";
-		$statement = $conn->prepare($query);
-		$statement->execute();
-		$adminResult = $statement->fetchAll(PDO::FETCH_KEY_PAIR);
-		
-		var_dump($adminResult); exit;
-	
 	
 	}
-
 	
-
-	
-?>
+	 ?>
 
 
 
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-</head>
-<body>
-  <div class="header">
+	 <div class= "container">
+	 <div class="header">
   	<h2>Login</h2>
   </div>
-	 
   <form method="post" action="login.php?action=login">
   	<div >
   		<label>Username</label>
@@ -94,6 +73,10 @@
   	<p>
   		Not yet a member? <a href="registration.php">Registration</a>
   	</p>
+	  <div style="color: red"> <?php if (!empty($errors)) {
+			include_once ('errors.php');
+		} ?>
   </form>
-</body>
-</html>
+  </div>
+</body> 
+</html> 
