@@ -17,13 +17,16 @@
     } else {
 ?> 
     <div class="container">
-    <h3>Vila Best</h3>
-    <p>A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.vvvvvvvvvvs</p>
+        <h3>Vila Best</h3>
+        <p>A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.A navigation bar is a navigation header that is placed at the top of the page.vvvvvvvvvvs</p>
+        <br>
+        <p>If you want to make a reservation, please <a href="login.php">login</a></p>
     </div>
 <?php
     include_once('acommodation.php'); 
       }  
-?>
+
+    include_once('footer.php');
+  ?>
   
  
-

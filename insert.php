@@ -1,6 +1,5 @@
 <?php
 
-
   session_start();
   require ('conn.php');
 
@@ -16,38 +15,39 @@
       $password_1 = $_POST['password_1'];
       $phone = $_POST['phone'];
 
-  if (empty($first_name)) { 
-      array_push($errors, "Name is required"); 
-    }
-  if (!empty($username)) { 
-      $qUsername = "SELECT * FROM `user` WHERE Username = :potrebitelsko_ime";
-      $stmuser = $conn->prepare($qUsername);
-      $userData = [
-        ':potrebitelsko_ime' => $_POST['username']
-      ];
-      $stmuser->execute($userData);
-    if ($stmuser->rowCount()) {
-      array_push($errors, 'Username already exist');
-    } else {
-      $potrebitelsko_ime = $_POST['username'];
-    } 
-  }
-    if (empty($username)) { 
-        array_push($errors, "Username is required"); 
+      if(empty($first_name)) { 
+          array_push($errors, "Name is required"); 
+      }
+      if (!empty($username)) { 
+          $qUsername = "SELECT * FROM `user` WHERE Username = :potrebitelsko_ime";
+          $stmuser = $conn->prepare($qUsername);
+          $userData = [
+            ':potrebitelsko_ime' => $_POST['username']
+          ];
+          $stmuser->execute($userData);
+          if ($stmuser->rowCount()) {
+            array_push($errors, 'Username already exist');
+          } else {
+            $potrebitelsko_ime = $_POST['username'];
+          } 
+      }
+      if (empty($username)) { 
+          array_push($errors, "Username is required"); 
       }
       if (!empty($email)) { 
-        $qUsermail = "SELECT * FROM `user` WHERE Email = :poshta";
-        $stmmail = $conn->prepare($qUsermail);
-        $mailData = [
-          ':poshta' => $_POST['email']
-        ];
-        $stmmail->execute($mailData);
-      if ($stmmail->rowCount()) {
-        array_push($errors, 'Email already exist');
-      } else {
-        $poshta = $_POST['email'];
-      } 
-    }
+          $qUsermail = "SELECT * FROM `user` WHERE Email = :poshta";
+          $stmmail = $conn->prepare($qUsermail);
+          $mailData = [
+            ':poshta' => $_POST['email']
+          ];
+          $stmmail->execute($mailData);
+
+          if ($stmmail->rowCount()) {
+            array_push($errors, 'Email already exist');
+          } else {
+            $poshta = $_POST['email'];
+          } 
+      }
       if (empty($email)) { 
           array_push($errors, "Email is required"); 
           }
@@ -80,12 +80,12 @@
             $result = $statement->execute($data); 
             
             
-      if ($result) {
-          echo  '<h3> Acount created. Please <a href="login.php">log in</a></h3>';
+        if ($result) {
+            echo  '<h3> Acount created. Please <a href="login.php">log in</a></h3>';
         
-            }
-          }
-        } 
+        }
+      }
+  } 
 
 
 

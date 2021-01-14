@@ -1,5 +1,6 @@
 <?php
 	require_once('conn.php');
+include_once('menu.php');
 	include_once('header.php');
 
  	$errors = [];
@@ -91,37 +92,36 @@
 ?>
 
 <body>
-    <div class="container">
-	<div class="header">
-        <h2>Registration</h2>
-    </div>
 	<form action="index.php?action=registration" method="POST" >
-	
-    <div>
-        Name: <input type="text" name="first_name">
-    </div>
-    <div>
-  	    Username: <input type="text" name="username">
-  	</div>
-  	<div>
-  	    Email: <input type="email" name="email">
-  	</div>
-  	<div>
-  	    Password: <input type="password" name="password_1">
-  	</div>
-  	<div>
-      Confirm password: <input type="password" name="password_2">
-  	</div>
-    <div>
-        Phone: <input type="text" name="phone">  
-    </div>
-  	<div>
-  	  <button type="submit" class="btn" name="reg_user" value= "Register">Register</button>
-  	</div>
-  	<p>
-  		Already a member? <a href="login.php">Sign in</a>
-  	</p>
-	</div>
+
+    <div class="container">
+							<div class="header">
+										<h2>Registration</h2>
+							</div>	
+							<div>
+										Name: <input type="text" name="first_name">
+							</div>
+							<div>
+									Username: <input type="text" name="username">
+							</div>
+							<div>
+									Email: <input type="email" name="email">
+							</div>
+							<div>
+								Password: <input type="password" name="password_1">
+							</div>
+							<div>
+								Confirm password: <input type="password" name="password_2">
+						</div>
+							<div>
+									Phone: <input type="text" name="phone">  
+							</div>
+							<div>
+								<button type="submit" class="btn" name="reg_user" value= "Register">Register</button>
+							</div>
+							<p> Already a member? <a href="login.php">Sign in</a>
+							</p>
+				</div>
 
 </body>
 </html>
